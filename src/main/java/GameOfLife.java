@@ -1,22 +1,30 @@
+
 public class GameOfLife {
 
-    public static void main(String[] args) {
+
+    static String converter(String[][] cells) {
+        String ans = "";
         int w = 10, h = 10;
 
-        // initialising the grid.
-        int[][] grid = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 1, 1, 1, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-        };
-
-        // Displaying the grid
+        int[][] grid = new int[w][h];
+        for (int i = 0; i < 10; i++) {
+            for (int x = 0; x < 10; x++) {
+                if (cells[i][x].equals("+")) {
+                    grid[i][x] = 0;
+                } else grid[i][x] = 1;
+            }
+        }
         System.out.println("Original Generation");
+
         System.out.println(generationPrint(w, h, grid));
 
         System.out.println();
         System.out.println(nextGeneration(grid, w, h));
-        ;
+
+//        ans += generationPrint(w, h, grid);
+//        ans += "\n";
+        ans += nextGeneration(grid, w, h);
+        return ans;
     }
 
     // Output with + and #
